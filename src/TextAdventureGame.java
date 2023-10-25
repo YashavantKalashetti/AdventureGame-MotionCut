@@ -196,8 +196,8 @@ class Game {
             case 3:
                 System.out.println("You uncover a hidden passage to a secret chamber.");
                 System.out.println("Inside, you find a powerful enchanted weapon!");
-                System.out.println("You Found a Long Sword");
-                playerWeapon = "Long Sword (Katana)";
+                System.out.println("You Found a Long Sword (Katana)");
+                playerWeapon = "Long Sword";
                 System.out.println("Your Weapon: " + playerWeapon);
                 break;
             case 4:
