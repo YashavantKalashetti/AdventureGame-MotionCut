@@ -1,9 +1,9 @@
-package yash.Projects.AdventureGame;
+package yash.AdventureGame.src;
 
 import java.util.Scanner;
 import java.util.Random;
 
-public class TextAdventureGame {
+public class AdventureGame {
     public static void main(String[] args) {
         Game game = new Game();
         game.play();
@@ -154,8 +154,12 @@ class Game {
         System.out.println("\n------------------------------------------------------------------\n");
         System.out.println("There is a river. You drink the water and rest at the riverside.");
         System.out.println("Your HP is recovered.");
-        playerHP++;
-        System.out.println("Your HP: " + playerHP);
+        if (playerHP < 25){
+            playerHP++;
+            System.out.println("Your HP: " + playerHP);
+        }else {
+            System.out.println("You already have a Full HP");
+        }
         System.out.println("\n1: Go back to the crossroad");
         System.out.println("\n------------------------------------------------------------------\n");
 
@@ -170,9 +174,52 @@ class Game {
 
     private void east() {
         System.out.println("\n------------------------------------------------------------------\n");
-        System.out.println("You walked into a forest and found a Long Sword!");
-        playerWeapon = "Long Sword (Katana)";
-        System.out.println("Your Weapon: " + playerWeapon);
+        System.out.println("You venture south and find a hidden treasure!");
+
+        // Generate a random scenario for the treasure
+        int treasureScenario = random.nextInt(6);
+
+        switch (treasureScenario) {
+            case 0:
+                System.out.println("You found a chest of gold coins!");
+                int goldCoinsFound = random.nextInt(50) + 1;
+                System.out.println("You gained " + goldCoinsFound + " gold coins!");
+                break;
+            case 1:
+                System.out.println("You discover a valuable gemstone!");
+                System.out.println("It sparkles with radiant beauty.");
+                break;
+            case 2:
+                System.out.println("You find an old, dusty book filled with ancient knowledge.");
+                System.out.println("Reading it might grant you wisdom.");
+                break;
+            case 3:
+                System.out.println("You uncover a hidden passage to a secret chamber.");
+                System.out.println("Inside, you find a powerful enchanted weapon!");
+                System.out.println("You Found a Long Sword");
+                playerWeapon = "Long Sword (Katana)";
+                System.out.println("Your Weapon: " + playerWeapon);
+                break;
+            case 4:
+                System.out.println("You stumble upon a friendly forest spirit.");
+                System.out.println("The spirit offers you a choice: a special ability or a magical potion.");
+                System.out.println("1: Gain a special ability");
+                System.out.println("2: Take the magical potion");
+                int spiritChoice = scanner.nextInt();
+                if (spiritChoice == 1) {
+                    System.out.println("The spirit grants you the ability to 'Invisibility'.");
+                    System.out.println("You can now use this ability to sneak past enemies.");
+                } else if (spiritChoice == 2) {
+                    System.out.println("You drink the magical potion and feel a surge of energy.");
+                    System.out.println("Your HP is fully restored!");
+                    playerHP = 25;
+                }
+                break;
+            default:
+                System.out.println("You just found a empty box of Skeletons!");
+                break;
+        }
+
         System.out.println("\n1: Go back to the crossroad");
         System.out.println("\n------------------------------------------------------------------\n");
 
